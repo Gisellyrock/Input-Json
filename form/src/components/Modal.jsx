@@ -12,6 +12,28 @@ import {
 import { modelModal } from '@/app/_mock/modelModal';
 import { cn } from '@/utils/cn';
 
+const options = [
+  {
+    value: 'ac',
+    label: 'AC',
+  },
+  {
+    value: 'ba',
+    label: 'BA',
+  },
+];
+
+const teste = [
+  {
+    value: 'teste',
+    label: 'teste',
+  },
+  {
+    value: 'teste',
+    label: 'teste',
+  },
+];
+
 const Modal = ({ isOpen = true, closeModal, fields }) => {
   const methods = useForm();
 
@@ -40,7 +62,6 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
             <FontAwesomeIcon icon={faTimes} />
           </button>
         </div>
-
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <div className="grid gap-3 grid-cols-12 w-full h-full p-8">
@@ -53,13 +74,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                       rules={input.rules}
                       name={input.nome}
                       options={input.opcoes}
-                      className={cn(
-                        input.sizes?.width && `col-span-${input.sizes.width}`,
-                        input.sizes?.maxWidth &&
-                          `max-w-[${input.sizes.maxWidth}]`,
-                        input.sizes?.minWidth &&
-                          `min-w-[${input.sizes.minWidth}]`,
-                      )}
+                      className={`col-span-${input.width}`}
                     />
                   );
                 }
@@ -71,13 +86,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                       label={input.descricao}
                       rules={input.rules}
                       name={input.nome}
-                      className={cn(
-                        input.sizes?.width && `col-span-${input.sizes.width}`,
-                        input.sizes?.maxWidth &&
-                          `max-w-[${input.sizes.maxWidth}]`,
-                        input.sizes?.minWidth &&
-                          `min-w-[${input.sizes.minWidth}]`,
-                      )}
+                      className={`col-span-${input.width}`}
                     />
                   );
                 }
@@ -89,13 +98,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                       rules={input.rules}
                       label={input.descricao}
                       name={input.nome}
-                      className={cn(
-                        input.sizes?.width && `col-span-${input.sizes.width}`,
-                        input.sizes?.maxWidth &&
-                          `max-w-[${input.sizes.maxWidth}]`,
-                        input.sizes?.minWidth &&
-                          `min-w-[${input.sizes.minWidth}]`,
-                      )}
+                      className={`col-span-${input.width}`}
                     />
                   );
                 }
@@ -106,13 +109,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                     label={input.descricao}
                     rules={input.rules}
                     name={input.nome}
-                    className={cn(
-                      input.sizes?.width && `col-span-${input.sizes.width}`,
-                      input.sizes?.maxWidth &&
-                        `max-w-[${input.sizes.maxWidth}]`,
-                      input.sizes?.minWidth &&
-                        `min-w-[${input.sizes.minWidth}]`,
-                    )}
+                    className={`col-span-${input.width}`}
                   />
                 );
               })}
@@ -121,6 +118,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                 name="codigo_ibge"
                 className="col-span-4"
               />
+
               <RHFSelect
                 label="Teste"
                 name="select"
@@ -156,6 +154,7 @@ const Modal = ({ isOpen = true, closeModal, fields }) => {
                 options={options}
                 className="col-span-2"
               />
+
               <RHFCustomCheckbox
                 name="checkbox"
                 label="Checkbox"
